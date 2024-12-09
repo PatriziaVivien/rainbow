@@ -102,6 +102,15 @@ def get_lightness_from_rgba(rgba):
     Lightnes = lab[0]
     return Lightnes
 
+def combine_cmaps(cmap1, cmap2, cut1_1=0, cut1_2=200, cut2_1=0, cut2_2=200,
+                  steps1=200, steps2=200):
+    colors = np.vstack((cmap1(np.linspace(0,1,steps1))[cut1_1:cut1_2],
+                        
+                        cmap2.reversed()(np.linspace(0,1,steps2))[cut2_1:cut2_2]))
+    cmap = ListedColormap(colors)
+    return cmap
+    
+
 
 reds = []
 pinks = []
@@ -116,9 +125,9 @@ coldgreens = []
 turqoises = []
 lavenders = []
 deeppinks = []
-max_value = 0.9
-max_colors = 7
-max_main = [1, 1, 0.95, 0.9, 0.8, 0.7, 0.6]
+max_value = 0.95
+max_colors = 10
+max_main = [1, 1, 1, 1, 1, 0.95, 0.9, 0.8, 0.7, 0.6]
 j = np.linspace(1, 2, max_colors)
 j_high = np.linspace(1, 1.5, max_colors)
 for en, i in enumerate(np.linspace(1,2.5,max_colors)):
@@ -153,9 +162,20 @@ name_list = ["coppers", "oranges",
             "grassgreens"]
 col_dict = dict(zip(name_list, col_list))
 
-mpf_colors = col_dict['turqoises']
+mpf_colors = col_dict['brightblues']
 temp_colors = col_dict['reds']
-snow_colors = col_dict['brightblues']
+snow_colors = col_dict['blues']
+div_cmap =  combine_cmaps(make_cmap_from_rgba(col_dict["turqoises"]), 
+                          make_cmap_from_rgba(col_dict["pinks"]),
+                          cut1_2=195, steps2=195)
+
+div_rd_bu =  combine_cmaps(make_cmap_from_rgba(col_dict["reds"]), 
+                          make_cmap_from_rgba(col_dict["blues"]),
+                          cut1_2=195, cut2_2=170, steps1=173)
+
+div_lav_green =  combine_cmaps(make_cmap_from_rgba(col_dict["coldgreens"]), 
+                          make_cmap_from_rgba(col_dict["lavenders"]),
+                          cut1_2=180, cut2_2=180, steps1=190)
 
 if __name__=='__main__':
     
@@ -187,10 +207,10 @@ if __name__=='__main__':
               mid_brightblue]
     
 
-    fig, axis = plt.subplots(1,1, figsize=(3, 7))
+    fig, axis = plt.subplots(1,1, figsize=(4, 7))
     for i in range(13):
-        x = [1,2,3,4,5,6, 7]
-        y = np.array([1,1,1,1,1,1,1])*i
+        x = [1,2,3,4,5,6,7,8,9,10]
+        y = np.array([1,1,1,1,1,1,1,1,1,1])*i
         axis.scatter(x, y, s=300, c=col_list[i], marker='s')
         axis.set_axis_off()
     
@@ -201,6 +221,6 @@ if __name__=='__main__':
     plt.show()
     
     
-    rgb = make_cmap_from_rgba(deeppinks)
-    plot_cmap_lightness(rgb)
+    plot_cmap_lightness(div_lav_green)
+    
     

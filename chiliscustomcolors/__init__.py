@@ -4,4 +4,5 @@ from chiliscustomcolors.custom_colors import linearise_lightness
 from chiliscustomcolors.custom_colors import make_cmap_from_hex
 from chiliscustomcolors.custom_colors import make_cmap_from_rgba
 from chiliscustomcolors.custom_colors import get_lightness_from_rgba
+from chiliscustomcolors.custom_colors import combine_cmaps
 from chiliscustomcolors import custom_colors 
