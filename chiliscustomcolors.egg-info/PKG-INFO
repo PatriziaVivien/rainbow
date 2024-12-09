@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: chiliscustomcolors
+Version: 0.0.1
+Summary: Python package with pre defined colors and custom color maps
+Author: Patrizia Schoch
+Author-email: <patrizia.vivien@gmail.com>
+Keywords: python
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: colorspacious
+
+Python package to create custom semi linar colormaps. Pre defined colormaps and colors are available.

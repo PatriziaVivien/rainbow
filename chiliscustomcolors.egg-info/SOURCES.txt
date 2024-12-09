@@ -1,0 +1,8 @@
+setup.py
+chiliscustomcolors/__init__.py
+chiliscustomcolors/custom_colors.py
+chiliscustomcolors.egg-info/PKG-INFO
+chiliscustomcolors.egg-info/SOURCES.txt
+chiliscustomcolors.egg-info/dependency_links.txt
+chiliscustomcolors.egg-info/requires.txt
+chiliscustomcolors.egg-info/top_level.txt
