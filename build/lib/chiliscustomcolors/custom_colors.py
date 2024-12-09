@@ -201,6 +201,6 @@ if __name__=='__main__':
     plt.show()
     
     
-rgb = make_cmap_from_rgba(deeppinks)
-plot_cmap_lightness(rgb)
+    rgb = make_cmap_from_rgba(deeppinks)
+    plot_cmap_lightness(rgb)
     
