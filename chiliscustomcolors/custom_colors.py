@@ -110,34 +110,37 @@ def combine_cmaps(cmap1, cmap2, cut1_1=0, cut1_2=200, cut2_1=0, cut2_2=200,
     cmap = ListedColormap(colors)
     return cmap
     
-
-
 reds = []
+yellows = []
 pinks = []
 greens = []
 blues = []
 oranges = []
-purples = []
-brightblues = []
+nightblues = []
+bluegreens = []
 grassgreens = []
 coppers = []
 coldgreens = []
 turqoises = []
 lavenders = []
 deeppinks = []
+fire = []
+tests = []
 max_value = 0.95
 max_colors = 10
-max_main = [1, 1, 1, 1, 1, 0.95, 0.9, 0.8, 0.7, 0.6]
+max_main = [1, 1, 1, 1, 0.96, 0.93, 0.9, 0.8, 0.7, 0.65]
 j = np.linspace(1, 2, max_colors)
 j_high = np.linspace(1, 1.5, max_colors)
 for en, i in enumerate(np.linspace(1,2.5,max_colors)):
     i = (np.exp(i)*1/np.exp(1))
     reds.append((max_main[en], max_value/i, max_value/i, 1))
+    yellows.append((max_main[en], max_value/j_high[en], max_value/i, 1))
     pinks.append((max_main[en], max_value/i, max_value/j[en], 1))
     oranges.append((max_main[en], max_value/j[en], max_value/i, 1))
-    blues.append((max_value/i, max_value/i, max_main[en], 1))
-    purples.append((max_value/j[en], max_value/i, max_main[en], 1))
-    brightblues.append((max_value/i, max_value/j_high[en], max_main[en], 1))
+    blues.append((max_value/i, max_value/j[en], max_main[en], 1))
+    nightblues.append((max_value/i, max_value/i, max_main[en]/j_high[en], 1))
+    bluegreens.append((max_value/i, max_value/j_high[en], max_main[en], 1))
+    
     greens.append((max_value/i, max_main[en]/j_high[en], max_value/i, 1))
     grassgreens.append((max_value/j[en], max_main[en]/j_high[en], max_value/i, 1))
     coppers.append((max_main[en]/j_high[en], max_value/j[en], max_value/i, 1))
@@ -145,24 +148,83 @@ for en, i in enumerate(np.linspace(1,2.5,max_colors)):
     turqoises.append((max_value/i, max_main[en]/j_high[en], max_main[en]/j_high[en], 1))
     lavenders.append((max_value/j[en], max_value/i, max_main[en]/j_high[en], 1))
     deeppinks.append((max_main[en]/j_high[en], max_value/i, max_main[en]/j[en], 1))
+    
+    fire.append((max_main[en]**2, max_value/i, max_value/(i*2), 1))
+    #tests.append((max_value, max_value/j_high[en], max_main[en], 1))
 
-col_list = [coppers, oranges, 
+col_list = [coppers, yellows, oranges, 
             reds, pinks, 
             deeppinks, lavenders, 
-            purples, blues, 
-            brightblues, turqoises,
+            nightblues, blues, 
+            bluegreens, turqoises,
             coldgreens, greens,
-            grassgreens]
-name_list = ["coppers", "oranges", 
+            grassgreens,
+            #tests,
+            fire]
+name_list = ["coppers", "yellows", "oranges", 
             "reds", "pinks", 
             "deeppinks", "lavenders", 
-            "purples", "blues", 
-            "brightblues", "turqoises",
+            "nightblues", "blues", 
+            "bluegreens", "turqoises",
             "coldgreens", "greens",
-            "grassgreens"]
+            "grassgreens", 
+            #"tests",
+            "fire"]
 col_dict = dict(zip(name_list, col_list))
 
-mpf_colors = col_dict['brightblues']
+# =============================================================================
+# reds = []
+# pinks = []
+# greens = []
+# blues = []
+# oranges = []
+# purples = []
+# brightblues = []
+# grassgreens = []
+# coppers = []
+# coldgreens = []
+# turqoises = []
+# lavenders = []
+# deeppinks = []
+# max_value = 0.95
+# max_colors = 10
+# max_main = [1, 1, 1, 1, 1, 0.95, 0.9, 0.8, 0.7, 0.6]
+# j = np.linspace(1, 2, max_colors)
+# j_high = np.linspace(1, 1.5, max_colors)
+# for en, i in enumerate(np.linspace(1,2.5,max_colors)):
+#     i = (np.exp(i)*1/np.exp(1))
+#     reds.append((max_main[en], max_value/i, max_value/i, 1))
+#     pinks.append((max_main[en], max_value/i, max_value/j[en], 1))
+#     oranges.append((max_main[en], max_value/j[en], max_value/i, 1))
+#     blues.append((max_value/i, max_value/i, max_main[en], 1))
+#     purples.append((max_value/j[en], max_value/i, max_main[en], 1))
+#     brightblues.append((max_value/i, max_value/j_high[en], max_main[en], 1))
+#     greens.append((max_value/i, max_main[en]/j_high[en], max_value/i, 1))
+#     grassgreens.append((max_value/j[en], max_main[en]/j_high[en], max_value/i, 1))
+#     coppers.append((max_main[en]/j_high[en], max_value/j[en], max_value/i, 1))
+#     coldgreens.append((max_value/i, max_main[en]/j_high[en], max_value/j[en], 1))
+#     turqoises.append((max_value/i, max_main[en]/j_high[en], max_main[en]/j_high[en], 1))
+#     lavenders.append((max_value/j[en], max_value/i, max_main[en]/j_high[en], 1))
+#     deeppinks.append((max_main[en]/j_high[en], max_value/i, max_main[en]/j[en], 1))
+# 
+# col_list = [coppers, oranges, 
+#             reds, pinks, 
+#             deeppinks, lavenders, 
+#             purples, blues, 
+#             brightblues, turqoises,
+#             coldgreens, greens,
+#             grassgreens]
+# name_list = ["coppers", "oranges", 
+#             "reds", "pinks", 
+#             "deeppinks", "lavenders", 
+#             "purples", "blues", 
+#             "brightblues", "turqoises",
+#             "coldgreens", "greens",
+#             "grassgreens"]
+# col_dict = dict(zip(name_list, col_list))
+# =============================================================================
+
+mpf_colors = col_dict['bluegreens']
 temp_colors = col_dict['reds']
 snow_colors = col_dict['blues']
 div_cmap =  combine_cmaps(make_cmap_from_rgba(col_dict["turqoises"]), 
@@ -171,11 +233,17 @@ div_cmap =  combine_cmaps(make_cmap_from_rgba(col_dict["turqoises"]),
 
 div_rd_bu =  combine_cmaps(make_cmap_from_rgba(col_dict["reds"]), 
                           make_cmap_from_rgba(col_dict["blues"]),
-                          cut1_2=195, cut2_2=170, steps1=173)
+                          cut1_1=10, cut1_2=195, cut2_2=200, steps2=185)
 
 div_lav_green =  combine_cmaps(make_cmap_from_rgba(col_dict["coldgreens"]), 
                           make_cmap_from_rgba(col_dict["lavenders"]),
                           cut1_2=180, cut2_2=180, steps1=190)
+
+cmap_list = []
+for i in range(14):
+    cmap_list.append(make_cmap_from_rgba(col_list[i]).reversed())
+
+cmap_dict = dict(zip(name_list, cmap_list))
 
 if __name__=='__main__':
     
@@ -208,7 +276,7 @@ if __name__=='__main__':
     
 
     fig, axis = plt.subplots(1,1, figsize=(4, 7))
-    for i in range(13):
+    for i in range(14):
         x = [1,2,3,4,5,6,7,8,9,10]
         y = np.array([1,1,1,1,1,1,1,1,1,1])*i
         axis.scatter(x, y, s=300, c=col_list[i], marker='s')
@@ -221,6 +289,6 @@ if __name__=='__main__':
     plt.show()
     
     
-    plot_cmap_lightness(div_lav_green)
+    plot_cmap_lightness(div_rd_bu)
     
     
