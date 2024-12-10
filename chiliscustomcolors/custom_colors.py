@@ -281,7 +281,7 @@ if __name__=='__main__':
         y = np.array([1,1,1,1,1,1,1,1,1,1])*i
         axis.scatter(x, y, s=300, c=col_list[i], marker='s')
         axis.set_axis_off()
-    
+    plt.savefig('chiliscolors.png', bbox_inches='tight', dpi=300)
     # define rgba colors
     red = (1, 0, 0, 1)
     green = (0, 1, 0, 1)
